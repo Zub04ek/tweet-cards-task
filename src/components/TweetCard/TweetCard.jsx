@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Card,
   Line,
@@ -9,15 +9,17 @@ import {
   Image,
   FollowButton,
   Titles,
+  FollowingButton,
 } from './TweetCard.styled';
 import { editUser } from 'helpers/api';
 
 export const TweetCard = ({ user: { user, tweets, followers, id } }) => {
-  const numFormat = Intl.NumberFormat('en-US');
+  const [userId, setUserId] = useState('');
   const [newFollowers, setNewFollowers] = useState(followers);
   const [isFollowing, setIsFollowing] = useState(false);
 
-  const toggleFollowers = async () => {
+  const toggleFollowers = () => {
+    setUserId(id);
     if (!isFollowing) {
       setNewFollowers(prevFollower => prevFollower + 1);
       setIsFollowing(true);
@@ -26,24 +28,29 @@ export const TweetCard = ({ user: { user, tweets, followers, id } }) => {
       setIsFollowing(false);
     }
 
-    try {
-      await editUser(id, newFollowers);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   await editUser(id, newFollowers);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
-  //   useEffect(() => {
-  //     const editUsersInfo = async () => {
-  //       try {
-  //         const results = await editUser(id, newFollowers);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     };
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const editUsersInfo = async () => {
+      try {
+        await editUser(userId, newFollowers);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  //     editUsersInfo();
-  //   }, [id, newFollowers]);
+    editUsersInfo();
+  }, [newFollowers, userId]);
+
+  const numFormat = Intl.NumberFormat('en-US');
 
   return (
     <Card>
@@ -59,9 +66,9 @@ export const TweetCard = ({ user: { user, tweets, followers, id } }) => {
           <UserInfo>{numFormat.format(newFollowers)} Followers</UserInfo>
         </Titles>
         {isFollowing ? (
-          <FollowButton type="button" onClick={toggleFollowers}>
+          <FollowingButton type="button" onClick={toggleFollowers}>
             Following
-          </FollowButton>
+          </FollowingButton>
         ) : (
           <FollowButton type="button" onClick={toggleFollowers}>
             Follow

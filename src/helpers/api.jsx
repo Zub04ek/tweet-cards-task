@@ -10,7 +10,7 @@ export const fetchUsers = async (page = 1) => {
 };
 
 export const editUser = async (id, newFollowers) => {
-  const resp = await axios.patch(
+  const resp = await axios.put(
     `${BASE_URL}/${id}`,
     {
       followers: newFollowers,
@@ -19,6 +19,6 @@ export const editUser = async (id, newFollowers) => {
       headers: { 'Content-type': 'application/json; charset=UTF-8' },
     }
   );
-  console.log('resp', resp);
+  console.log('resp', resp.data);
   return resp.data;
 };

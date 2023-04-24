@@ -50,10 +50,10 @@ export const UserBox = styled.div`
 `;
 
 export const Titles = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 `;
 
 export const UserInfo = styled.p`
@@ -70,6 +70,22 @@ export const FollowButton = styled.button`
   margin-top: 26px;
   width: 196px;
   background: #ebd8ff;
+  border: 0px solid transparent;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+  cursor: pointer;
+`;
+
+export const FollowingButton = styled.button`
+  padding: 14px 39px;
+  margin-top: 26px;
+  width: 196px;
+  background: #5cd3a8;
   border: 0px solid transparent;
   box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
   border-radius: 10.3108px;
