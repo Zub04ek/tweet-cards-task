@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 // import { TweetCard } from 'components/TweetCard/TweetCard';
 import { TweetList } from 'components/TweetList/TweetList';
 // import { fetchUsers } from 'helpers/api';
 import {
-  BackLink,
   Header,
   LoadMoreButton,
   TweetLink,

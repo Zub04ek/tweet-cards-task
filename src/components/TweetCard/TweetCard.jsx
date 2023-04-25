@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Card,
   Line,
@@ -15,10 +15,10 @@ import {
   Ellipse,
 } from './TweetCard.styled';
 // import { editUser } from 'helpers/api';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { editUser } from 'redux/operations';
-import { selectTweetUsers } from 'redux/selectors';
-import { changingFollowers } from 'redux/userSlice';
+// import { selectTweetUsers } from 'redux/selectors';
+// import { changingFollowers } from 'redux/userSlice';
 import logo from '../../images/Logo.png';
 import background from '../../images/picture.png';
 // import icon from '../../images/Ellipse.png';
