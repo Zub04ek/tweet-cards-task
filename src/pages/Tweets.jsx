@@ -2,24 +2,41 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 // import { TweetCard } from 'components/TweetCard/TweetCard';
 import { TweetList } from 'components/TweetList/TweetList';
-import { fetchUsers } from 'helpers/api';
-import { LoadMoreButton } from 'components/TweetList/TweetList.styled';
+// import { fetchUsers } from 'helpers/api';
+import {
+  BackLink,
+  Header,
+  LoadMoreButton,
+  TweetLink,
+} from 'components/TweetList/TweetList.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTweetUsers } from 'redux/selectors';
+import { fetchUsers } from 'redux/operations';
+import { StatusFilter } from 'components/StatusFilter/StatusFilter';
 
 const Tweets = () => {
-  const [users, setUsers] = useState([]);
+  const users = useSelector(selectTweetUsers);
   const [currentPage, setCurrentPage] = useState(1);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const fetchUsersInfo = async () => {
+  //     try {
+  //       const results = await fetchUsers(currentPage);
+  //       setUsers(prevUsers => [...prevUsers, ...results]);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchUsersInfo();
+  // }, [currentPage]);
 
   useEffect(() => {
-    const fetchUsersInfo = async () => {
-      try {
-        const results = await fetchUsers(currentPage);
-        setUsers(prevUsers => [...prevUsers, ...results]);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchUsersInfo();
-  }, [currentPage]);
+    // if (users) {
+    //   return;
+    // }
+    dispatch(fetchUsers(currentPage));
+  }, [currentPage, dispatch]);
 
   const hasMorePages = useMemo(() => {
     const totalUsers = 12;
@@ -36,9 +53,12 @@ const Tweets = () => {
 
   return (
     <main>
-      <Link to={backLinkHref.current}>Go back</Link>
-      <TweetList users={users} />
-      {hasMorePages && (
+      <Header>
+        <TweetLink to={backLinkHref.current}>Go back</TweetLink>
+        <StatusFilter />
+      </Header>
+      <TweetList />
+      {hasMorePages && users.length > 0 && (
         <LoadMoreButton type="button" onClick={handleLoad}>
           Load more
         </LoadMoreButton>

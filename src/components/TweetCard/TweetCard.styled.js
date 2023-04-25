@@ -26,6 +26,8 @@ export const LogoImage = styled.img`
 
 export const Image = styled.img`
   position: absolute;
+  top: 28px;
+  left: 36px;
 `;
 
 export const Line = styled.div`
@@ -45,7 +47,7 @@ export const UserBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 62px;
+  /* padding-top: 62px; */
   /* padding-bottom: 36px; */
 `;
 
@@ -54,6 +56,7 @@ export const Titles = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
+  margin-top: 62px;
 `;
 
 export const UserInfo = styled.p`
@@ -95,4 +98,33 @@ export const FollowingButton = styled.button`
   text-transform: uppercase;
   color: #373737;
   cursor: pointer;
+`;
+
+export const ImageBox = styled.div`
+  position: absolute;
+  top: -44px;
+  width: 80px;
+  height: 80px;
+  background-color: #5736a3;
+  overflow: hidden;
+`;
+
+export const Avatar = styled.img`
+  position: absolute;
+  top: 9.42px;
+  left: 9.48px;
+  object-fit: cover;
+  /* overflow: hidden; */
+  border-radius: 50%;
+`;
+
+export const Ellipse = styled.div`
+  width: 80px;
+  height: 80px;
+  /* padding: 8px; */
+  background-color: #ebd8ff;
+  box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
+    inset 0px -2.19582px 4.39163px #ae7be3,
+    inset 0px 4.39163px 3.29372px #fbf8ff;
+  border-radius: 50%;
 `;
