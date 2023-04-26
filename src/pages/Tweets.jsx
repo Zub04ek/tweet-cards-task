@@ -1,8 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { TweetCard } from 'components/TweetCard/TweetCard';
 import { TweetList } from 'components/TweetList/TweetList';
-// import { fetchUsers } from 'helpers/api';
 import {
   Header,
   LoadMoreButton,
@@ -18,22 +16,7 @@ const Tweets = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const fetchUsersInfo = async () => {
-  //     try {
-  //       const results = await fetchUsers(currentPage);
-  //       setUsers(prevUsers => [...prevUsers, ...results]);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchUsersInfo();
-  // }, [currentPage]);
-
   useEffect(() => {
-    // if (users) {
-    //   return;
-    // }
     dispatch(fetchUsers(currentPage));
   }, [currentPage, dispatch]);
 

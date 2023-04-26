@@ -20,10 +20,6 @@ export const Logo = styled.a`
   left: 20px;
 `;
 
-export const LogoImage = styled.img`
-  background-image: url('../../images/Logo.png');
-`;
-
 export const Image = styled.img`
   position: absolute;
   top: 28px;
@@ -47,8 +43,6 @@ export const UserBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-top: 62px; */
-  /* padding-bottom: 36px; */
 `;
 
 export const Titles = styled.div`
@@ -64,7 +58,6 @@ export const UserInfo = styled.p`
   font-size: 20px;
   line-height: 24px;
   text-transform: uppercase;
-  /* text-align: center; */
   color: #ebd8ff;
 `;
 
@@ -114,14 +107,12 @@ export const Avatar = styled.img`
   top: 9.42px;
   left: 9.48px;
   object-fit: cover;
-  /* overflow: hidden; */
   border-radius: 50%;
 `;
 
 export const Ellipse = styled.div`
   width: 80px;
   height: 80px;
-  /* padding: 8px; */
   background-color: #ebd8ff;
   box-shadow: 0px 4.39163px 4.39163px rgba(0, 0, 0, 0.06),
     inset 0px -2.19582px 4.39163px #ae7be3,

@@ -32,10 +32,8 @@ export const LoadMoreButton = styled.button`
   border: 0;
   text-decoration: none;
   cursor: pointer;
-  /* font-family: inherit; */
   font-size: 18px;
   line-height: 24px;
-  /* font-style: normal; */
   font-weight: 500;
   min-width: 180px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),

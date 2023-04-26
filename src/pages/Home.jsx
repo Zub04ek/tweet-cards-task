@@ -1,6 +1,5 @@
 import { HomeContainer } from 'components/SharedLayout/SharedLayout.styled';
 import { TweetLink } from 'components/TweetList/TweetList.styled';
-// import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
