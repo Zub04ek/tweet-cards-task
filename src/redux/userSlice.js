@@ -21,14 +21,22 @@ const usersSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(fetchUsers.fulfilled, (state, action) => {
-        action.payload.map(user =>
-          state.tweetUsers.push({ ...user, status: user.status || 'follow' })
-        );
+        action.payload.map(user => {
+          const tweetUser = state.tweetUsers.find(
+            prevUser => prevUser.id === user.id
+          );
+          if (tweetUser) {
+            return state;
+          }
+          return state.tweetUsers.push({
+            ...user,
+            status: user.status || 'follow',
+          });
+        });
       })
       .addCase(editUser.fulfilled, (state, action) => {
         const { id, followers, status } = action.payload;
         const index = state.tweetUsers.findIndex(user => user.id === id);
-        console.log('action.payload', action.payload);
 
         state.tweetUsers.splice(index, 1, {
           ...action.payload,

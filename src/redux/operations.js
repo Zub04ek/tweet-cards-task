@@ -23,7 +23,6 @@ export const editUser = createAsyncThunk(
     const { id } = tweetUser;
     try {
       const response = await axios.put(`/users/${id}`, tweetUser);
-      console.log('resp', response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

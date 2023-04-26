@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Card,
   Line,
@@ -24,21 +24,20 @@ export const TweetCard = ({ tweetUser }) => {
   const [newFollowers, setNewFollowers] = useState(tweetUser.followers);
   const [status, setStatus] = useState(tweetUser.status);
 
-  const toggleFollowers = () => {
-    console.log('tweetUser', tweetUser);
-
+  const updateFollowers = () => {
     if (status === 'follow') {
-      setNewFollowers(prevFollower => prevFollower + 1);
       setStatus('following');
+      setNewFollowers(prevFollower => prevFollower + 1);
     } else {
-      setNewFollowers(prevFollower => prevFollower - 1);
       setStatus('follow');
+      setNewFollowers(prevFollower => prevFollower - 1);
     }
-
-    console.log('newFollowers', newFollowers);
-
-    dispatch(editUser({ ...tweetUser, followers: newFollowers, status }));
   };
+
+  useEffect(() => {
+    dispatch(editUser({ ...tweetUser, followers: newFollowers, status }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, newFollowers, status]);
 
   const numFormat = Intl.NumberFormat('en-US');
 
@@ -60,11 +59,11 @@ export const TweetCard = ({ tweetUser }) => {
           <UserInfo>{numFormat.format(tweetUser.followers)} Followers</UserInfo>
         </Titles>
         {tweetUser.status === 'following' ? (
-          <FollowingButton type="button" onClick={toggleFollowers}>
+          <FollowingButton type="button" onClick={updateFollowers}>
             Following
           </FollowingButton>
         ) : (
-          <FollowButton type="button" onClick={toggleFollowers}>
+          <FollowButton type="button" onClick={updateFollowers}>
             Follow
           </FollowButton>
         )}
