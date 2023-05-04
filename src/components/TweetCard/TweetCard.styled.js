@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import background from '../../images/picture.png';
 
 export const Card = styled.div`
   position: relative;
@@ -12,18 +13,22 @@ export const Card = styled.div`
   );
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
   border-radius: 20px;
+  ::before {
+    content: '';
+    width: 308px;
+    height: 168px;
+    background-image: url(${background});
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 28px;
+    left: 36px;
+  }
 `;
 
 export const Logo = styled.a`
   position: absolute;
   top: 20px;
   left: 20px;
-`;
-
-export const Image = styled.img`
-  position: absolute;
-  top: 28px;
-  left: 36px;
 `;
 
 export const Line = styled.div`

@@ -5,7 +5,6 @@ import {
   Logo,
   UserInfo,
   UserBox,
-  Image,
   FollowButton,
   Titles,
   FollowingButton,
@@ -16,7 +15,6 @@ import {
 import { useDispatch } from 'react-redux';
 import { editUser } from 'redux/operations';
 import logo from '../../images/Logo.png';
-import background from '../../images/picture.png';
 
 export const TweetCard = ({ tweetUser }) => {
   const dispatch = useDispatch();
@@ -43,7 +41,6 @@ export const TweetCard = ({ tweetUser }) => {
 
   return (
     <Card>
-      <Image src={background} alt="background" />
       <Logo href="https://goit.global/ua/">
         <img src={logo} alt="logo" />
       </Logo>
